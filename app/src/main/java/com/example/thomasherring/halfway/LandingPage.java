@@ -1,23 +1,12 @@
 package com.example.thomasherring.halfway;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.example.thomasherring.halfway.Fragments.CreateFragment;
 import com.example.thomasherring.halfway.Fragments.MeetingsFragment;
@@ -25,7 +14,7 @@ import com.example.thomasherring.halfway.Fragments.SettingsFragment;
 
 public class LandingPage extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
+    public static LandingPage instance;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -40,7 +29,7 @@ public class LandingPage extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
-
+        instance = this;
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -79,7 +68,6 @@ public class LandingPage extends AppCompatActivity
     }
 
 
-
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -115,8 +103,6 @@ public class LandingPage extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 }
