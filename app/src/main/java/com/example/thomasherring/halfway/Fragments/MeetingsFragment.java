@@ -38,10 +38,10 @@ public class MeetingsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_meetings, container, false);
         ArrayList<String> meetings = new ArrayList<>();
         for(int i = 0; i < MeetingList.mainList.size();i++){
-            meetings.add(String.valueOf(i));
+            meetings.add(String.valueOf(i + 1));
         }
         ListAdapter adapter = new ArrayAdapter<String>(LandingPage.instance, android.R.layout.simple_list_item_1,meetings);
-        ListView list = (ListView) LandingPage.instance.findViewById(R.id.listView);
+        ListView list = (ListView) rootView.findViewById(R.id.meetingList);
         list.setAdapter(adapter);
         return rootView;
 
