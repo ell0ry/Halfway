@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.thomasherring.halfway.MeetingObjects.Meeting;
+import com.example.thomasherring.halfway.MeetingObjects.MeetingList;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -20,7 +21,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterSelect extends Activity {
+public class FilterSelect extends AppCompatActivity {
 
     public static final String[] cat = {"Accounting", "Amusement Park", "Aquarium", "Art Gallery",
             "Bar", "Book Store", "Cafe", "Clothing Store", "Convenience Store", "Electronics Store",
@@ -62,14 +63,38 @@ public class FilterSelect extends Activity {
                 LatLng masterLoc = masterLoc = gson.fromJson(json, LatLng.class);
                 toAdd.changeLatLng(masterLoc);
                 toAdd.catNum = catNum[position];
+                MeetingList.mainList.add(toAdd);
+                Toast.makeText(parent.getContext(), "Meeting added.", Toast.LENGTH_LONG).show();
+                startActivity(intent);
 
             }
-        });
+
+
+           });
 
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }

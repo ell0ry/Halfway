@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class MeetingList {
 
-    public static ArrayList<Meeting> mainList;
+    public static ArrayList<Meeting> mainList = new ArrayList<Meeting>();
 
 
 }
